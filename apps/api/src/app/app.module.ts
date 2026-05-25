@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from '../infrastructure/prisma/prisma.module';
+import { WorkTypeModule } from '../modules/work-type/work-type.module';
 import { appConfig, environmentValidationSchema } from './app.config';
 
 @Module({
@@ -15,6 +16,7 @@ import { appConfig, environmentValidationSchema } from './app.config';
       },
     }),
     PrismaModule,
+    WorkTypeModule,
   ],
 })
 export class AppModule {}

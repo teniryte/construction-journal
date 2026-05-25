@@ -15,7 +15,7 @@ coverage/
 *.tsbuildinfo
 
 # Generated files
-apps/api/src/generated/prisma/
+apps/api/src/infrastructure/prisma/generated/
 apps/web/next-env.d.ts
 dev
 
