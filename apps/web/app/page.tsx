@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 type TestUserResponse = {
   name: string;
 };
+
 export default function Home() {
   const [name, setName] = useState<string | null>(null);
 

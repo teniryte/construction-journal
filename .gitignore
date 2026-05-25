@@ -17,6 +17,7 @@ coverage/
 # Generated files
 apps/api/src/generated/prisma/
 apps/web/next-env.d.ts
+dev
 
 # Logs
 *.log
