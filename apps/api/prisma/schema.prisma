@@ -17,3 +17,13 @@ model WorkType {
   id   Int    @id @default(autoincrement())
   name String @unique
 }
+
+model WorkEntry {
+  id           Int      @id @default(autoincrement())
+  date         DateTime @db.Date
+  workType     String
+  volume       Float
+  unit         String
+  executorName String
+  createdAt    DateTime @default(now())
+}

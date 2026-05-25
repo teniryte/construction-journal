@@ -10,5 +10,7 @@
     }
   },
   "types": "./src/index.ts",
-  "dependencies": {}
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
 }

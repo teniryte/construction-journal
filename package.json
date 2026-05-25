@@ -17,8 +17,5 @@
     "prisma:seed": "bun --env-file=.env --filter @construction-journal/api prisma:seed",
     "prisma:studio": "bun --env-file=.env --filter @construction-journal/api prisma:studio",
     "prisma:push": "bun --env-file=.env --filter @construction-journal/api prisma:push"
-  },
-  "dependencies": {
-    "zod": "^4.4.3"
   }
 }
