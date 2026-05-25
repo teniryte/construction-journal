@@ -1,0 +1,20 @@
+{
+  "name": "construction-journal",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "bun --env-file=.env --filter @construction-journal/web dev",
+    "dev:api": "bun --env-file=.env --filter @construction-journal/api start:dev",
+    "dev": "bun --env-file=.env --filter '*' dev",
+    "build": "bun --env-file=.env --filter '*' build",
+    "lint": "bun --env-file=.env --filter '*' lint",
+    "prisma:generate": "bun --env-file=.env --filter @construction-journal/api prisma:generate",
+    "prisma:migrate": "bun --env-file=.env --filter @construction-journal/api prisma:migrate",
+    "prisma:studio": "bun --env-file=.env --filter @construction-journal/api prisma:studio",
+    "prisma:push": "bun --env-file=.env --filter @construction-journal/api prisma:push"
+  }
+}
