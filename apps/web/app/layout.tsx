@@ -1,21 +1,10 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { QueryProvider } from "@/app/providers/query-provider";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next';
+import { AppProvider } from '@/app/providers/app-provider';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Журнал работ",
-  description: "Учет выполненных строительных работ",
+  title: 'Журнал работ',
+  description: 'Учет выполненных строительных работ',
 };
 
 export default function RootLayout({
@@ -24,12 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ru"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <QueryProvider>{children}</QueryProvider>
+    <html lang="ru">
+      <body>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );
