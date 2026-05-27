@@ -14,7 +14,6 @@
     "lint": "bun --env-file=.env --filter '*' lint",
     "prisma:generate": "bun --env-file=.env --filter @construction-journal/api prisma:generate",
     "prisma:migrate": "bun --env-file=.env --filter @construction-journal/api prisma:migrate",
-    "prisma:seed": "bun --env-file=.env --filter @construction-journal/api prisma:seed",
     "prisma:studio": "bun --env-file=.env --filter @construction-journal/api prisma:studio",
     "prisma:push": "bun --env-file=.env --filter @construction-journal/api prisma:push"
   }

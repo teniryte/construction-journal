@@ -14,6 +14,7 @@ COPY packages/shared ./packages/shared
 
 WORKDIR /app/apps/api
 
+RUN bun run prisma:generate
 RUN bun run build
 
-CMD ["bun", "run", "start:prod"]
+CMD ["sh", "-c", "bunx prisma migrate deploy && bun run start:prod"]
