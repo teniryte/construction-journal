@@ -34,6 +34,14 @@ export function WorkEntriesFilter({
   onReset,
   onSortChange,
 }: WorkEntriesFilterProps) {
+  function handleBeginChange(value: string | null) {
+    onDateRangeChange(value, value && end && value > end ? value : end);
+  }
+
+  function handleEndChange(value: string | null) {
+    onDateRangeChange(value && begin && value < begin ? value : begin, value);
+  }
+
   return (
     <Card>
       <CardContent>
@@ -44,14 +52,14 @@ export function WorkEntriesFilter({
               label="Дата с"
               size="small"
               value={begin}
-              onChange={(value) => onDateRangeChange(value, end)}
+              onChange={handleBeginChange}
             />
             <AppDateField
               fullWidth
               label="Дата по"
               size="small"
               value={end}
-              onChange={(value) => onDateRangeChange(begin, value)}
+              onChange={handleEndChange}
             />
             <FormControl fullWidth size="small">
               <InputLabel id="work-entries-sort-label">Сортировка</InputLabel>
