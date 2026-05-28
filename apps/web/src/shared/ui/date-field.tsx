@@ -11,6 +11,7 @@ import {
   type FocusEvent,
   type MouseEvent,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
@@ -36,6 +37,7 @@ export function AppDateField({
   ...textFieldProps
 }: AppDateFieldProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const shouldValidateOnCloseRef = useRef(false);
   const pickerValue = useMemo(() => parseIsoDate(value), [value]);
 
   const htmlInputSlotProps =
@@ -51,6 +53,10 @@ export function AppDateField({
         ? { variant: 'standard' as const }
         : { variant: 'outlined' as const }),
     onBlur: (event: FocusEvent<HTMLDivElement>) => {
+      if (shouldValidateOnCloseRef.current || isOpen) {
+        return;
+      }
+
       onBlur?.(event as Parameters<NonNullable<TextFieldProps['onBlur']>>[0]);
     },
     onClick: (event: MouseEvent<HTMLDivElement>) => {
@@ -87,7 +93,21 @@ export function AppDateField({
 
   function openPicker() {
     if (!disabled) {
+      shouldValidateOnCloseRef.current = true;
       setIsOpen(true);
+    }
+  }
+
+  function handleClose() {
+    setIsOpen(false);
+
+    if (shouldValidateOnCloseRef.current) {
+      shouldValidateOnCloseRef.current = false;
+      onBlur?.(
+        undefined as unknown as Parameters<
+          NonNullable<TextFieldProps['onBlur']>
+        >[0],
+      );
     }
   }
 
@@ -111,7 +131,7 @@ export function AppDateField({
       }}
       value={pickerValue}
       onChange={handleChange}
-      onClose={() => setIsOpen(false)}
+      onClose={handleClose}
     />
   );
 }

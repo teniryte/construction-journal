@@ -43,6 +43,8 @@ export function useWorkEntryForm({
   const form = useForm<WorkEntryFormValues>({
     resolver: zodResolver(workEntryInputSchema),
     defaultValues: emptyWorkEntryFormValues,
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
   });
 
   const entryQuery = useQuery({
